@@ -13,7 +13,7 @@ from datetime import datetime
 
 # Get texmf-dist root from package
 # Absolute path to the texmf-dist folder of osdag-latex-env
-LATEX_ENV_PATH = os.path.abspath(os.path.join("data", "ResourceFiles", "osdag-latex-env"))
+LATEX_ENV_PATH = os.path.abspath(os.path.join("ResourceFiles", "osdag-latex-env"))
 TEXMF_DIST = os.path.join(LATEX_ENV_PATH, "texmf-dist")
 
 # Set TEXMFHOME to point to our LaTeX environment (optional, for tools like kpsewhich)
@@ -28,7 +28,7 @@ texinputs_dirs = [
 ]
 os.environ["TEXINPUTS"] = os.pathsep.join(texinputs_dirs)
 
-LATEX_ENV_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), 'data', 'ResourceFiles', 'osdag-latex-env'))
+LATEX_ENV_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), 'ResourceFiles', 'osdag-latex-env'))
 FALLBACK_PDFLATEX_PATH = os.path.join(LATEX_ENV_PATH, 'bin', 'windows', 'pdflatex.exe')
 PDFLATEX_PATH = shutil.which("pdflatex") or FALLBACK_PDFLATEX_PATH
 
@@ -83,10 +83,10 @@ def test_required_sty_files_present(sty_file):
 
 def test_compile_latex_with_pylatex():
 
-    os.environ['TEXMFHOME'] = os.path.abspath("data/ResourceFiles/osdag-latex-env/texmf-dist")
-    os.environ["TEXINPUTS"] = os.path.abspath("data/ResourceFiles/osdag-latex-env/texmf-dist") + os.pathsep + os.environ.get("TEXINPUTS", "")
+    os.environ['TEXMFHOME'] = os.path.abspath("ResourceFiles/osdag-latex-env/texmf-dist")
+    os.environ["TEXINPUTS"] = os.path.abspath("ResourceFiles/osdag-latex-env/texmf-dist") + os.pathsep + os.environ.get("TEXINPUTS", "")
 
-    sty_pkgs = os.path.abspath(os.path.join("data", "ResourceFiles", "osdag-latex-env", "texmf-dist"))
+    sty_pkgs = os.path.abspath(os.path.join("ResourceFiles", "osdag-latex-env", "texmf-dist"))
     sty_pkgs = sty_pkgs.replace("\\", "/")  # Normalize path for LaTeX on Windows
     pkg_resources = [f'{sty_pkgs}/amsmath', f'{sty_pkgs}/graphics', f'{sty_pkgs}/needspace']
     texinp = os.environ.get('TEXINPUTS', ' ')
@@ -184,17 +184,17 @@ Auto Page-Break Table & longtable allows breaking \\
 def test_compile_latex_with_pylatex_report():
 
     # Set LaTeX environment paths
-    os.environ['TEXMFHOME'] = os.path.abspath("data/ResourceFiles/osdag-latex-env/texmf-dist")
-    os.environ["TEXINPUTS"] = os.path.abspath("data/ResourceFiles/osdag-latex-env/texmf-dist") + os.pathsep + os.environ.get("TEXINPUTS", "")
+    os.environ['TEXMFHOME'] = os.path.abspath("ResourceFiles/osdag-latex-env/texmf-dist")
+    os.environ["TEXINPUTS"] = os.path.abspath("ResourceFiles/osdag-latex-env/texmf-dist") + os.pathsep + os.environ.get("TEXINPUTS", "")
 
-    sty_pkgs = os.path.abspath(os.path.join("data", "ResourceFiles", "osdag-latex-env", "texmf-dist"))
+    sty_pkgs = os.path.abspath(os.path.join("ResourceFiles", "osdag-latex-env", "texmf-dist"))
     sty_pkgs = sty_pkgs.replace("\\", "/")  # Normalize path for LaTeX on Windows
     pkg_resources = [f'{sty_pkgs}/amsmath', f'{sty_pkgs}/graphics', f'{sty_pkgs}/needspace']
     texinp = os.environ.get('TEXINPUTS', ' ')
     pkg_path = ";".join(pkg_resources)
     os.environ['TEXINPUTS'] = f'{pkg_path};{texinp}'
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    pkg_images = os.path.join(base_dir, "data", "ResourceFiles", "images")
+    pkg_images = os.path.join(base_dir, "ResourceFiles", "images")
     geometry_options = {
         "a4paper": True,
         "top": "4cm",
