@@ -15,7 +15,6 @@ from datetime import datetime
 # Absolute path to the texmf-dist folder of osdag-latex-env
 LATEX_ENV_PATH = os.path.abspath(os.path.join("ResourceFiles", "osdag-latex-env"))
 TEXMF_DIST = os.path.join(LATEX_ENV_PATH, "texmf-dist")
-
 # Set TEXMFHOME to point to our LaTeX environment (optional, for tools like kpsewhich)
 os.environ["TEXMFHOME"] = TEXMF_DIST
 
